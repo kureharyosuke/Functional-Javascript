@@ -55,3 +55,45 @@ add5(obj2, 10);
 console.log(obj2.val);
 
 /* 일급 함수 */
+
+var f1JS = function (a) {
+  return a * a;
+};
+console.log(f1JS);
+
+var f2JS = add;
+console.log(f2JS);
+
+function f3JS(f) {
+  return f();
+}
+
+f3JS(function () {
+  return 10;
+});
+
+console.log(
+  f3JS(function () {
+    return 10;
+  })
+);
+
+/* add_maker */
+
+function add_makerJS(a) {
+  //1. 이 함수가 클로저임 function (b) { return a + b;};
+  return function (b) {
+    return a + b;
+  };
+}
+
+// 클로저개념과 일급함수개념
+var addJS10 = add_makerJS(10);
+
+console.log(addJS10(20));
+
+var addJS5 = add_makerJS(5);
+var addJS15 = add_makerJS(15);
+
+console.log(addJS5(10));
+console.log(addJS15(10));
