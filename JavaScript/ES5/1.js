@@ -97,3 +97,33 @@ var addJS15 = add_makerJS(15);
 
 console.log(addJS5(10));
 console.log(addJS15(10));
+
+function f4JS(f1, f2, f3) {
+  return f3(f1() + f2());
+}
+
+f4JS(
+  function () {
+    return 2;
+  },
+  function () {
+    return 1;
+  },
+  function (a) {
+    return a * a;
+  }
+);
+
+console.log(
+  f4JS(
+    function () {
+      return 2;
+    },
+    function () {
+      return 1;
+    },
+    function (a) {
+      return a * a;
+    }
+  )
+);
