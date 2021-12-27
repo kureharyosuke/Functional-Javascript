@@ -104,7 +104,38 @@ let addTS10: Function = add_makerTS(10);
 console.log(addTS10(20));
 
 let addTS20: Function = add_makerTS(20);
-var addTS15: Function = add_makerTS(15);
+let addTS15: Function = add_makerTS(15);
 
 console.log(addTS20(10));
 console.log(addTS15(10));
+
+function f4TS(f1: Function, f2: Function, f3: Function): Function {
+  return f3(f1() + f2());
+}
+
+// 순수한 함수
+f4TS(
+  function () {
+    return 2;
+  },
+  function () {
+    return 1;
+  },
+  function (a) {
+    return a * a;
+  }
+);
+
+console.log(
+  f4TS(
+    function () {
+      return 2;
+    },
+    function () {
+      return 1;
+    },
+    function (a) {
+      return a * a;
+    }
+  )
+);
