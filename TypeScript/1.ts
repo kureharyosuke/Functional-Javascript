@@ -67,6 +67,44 @@ console.log(objTS2.val);
 // function addTS4(objTS1: obj1Type, b: number): void {
 // return 사용하지 않고 변경되니까, void 또는 any 사용해야하고, 순수하지 않은 함수됨.
 // function addTS4(objTS1: obj1Type, b: number): number {
-// return
+// return 을 사용하게 되면, number 로 반환되고, 순수하지 않은 함수가 됨.
 // function addTS5(obj: obj2Type, b: number): obj2Type {
 // 순수 함수됨.
+
+/* 일급 함수 */
+
+let f1TS = function (a) {
+  return a * a;
+};
+console.log(f1TS);
+
+var f2TS: Function = addTS;
+console.log(f2TS);
+
+function f3TS(f: Function): number {
+  return f();
+}
+
+f3TS(function () {
+  return 10;
+});
+
+/* add_maker */
+
+function add_makerTS(a: number): Function {
+  //1. 이 함수가 클로저임 function (b) { return a + b;};
+  return function (b: number): number {
+    return a + b;
+  };
+}
+
+// 클로저개념과 일급함수개념
+let addTS10: Function = add_makerTS(10);
+
+console.log(addTS10(20));
+
+let addTS20: Function = add_makerTS(20);
+var addTS15: Function = add_makerTS(15);
+
+console.log(addTS20(10));
+console.log(addTS15(10));
