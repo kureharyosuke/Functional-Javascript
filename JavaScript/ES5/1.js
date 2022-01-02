@@ -102,6 +102,7 @@ function f4JS(f1, f2, f3) {
   return f3(f1() + f2());
 }
 
+// 순수한 함수
 f4JS(
   function () {
     return 2;
